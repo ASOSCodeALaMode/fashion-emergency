@@ -1,0 +1,8 @@
+﻿fieldset label {
+    float: left;
+}
+form {
+    width: 80%;
+    text-align: center;
+    display: inline-block;
+}
