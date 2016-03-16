@@ -23,18 +23,36 @@
 @media only screen and (max-width: 430px) {
    .product .detail  { font-size: 22px; }
 }
-.price, .availability {
+.product .price, .product .availability {
     position: relative
 }
-.price {
+.product .price {
     float: right
 }
 .price:before {
     content: '£';
 }
-.availability {
+.product .availability {
     float: left
 }
 .availability:after {
     content: 'HR';
+}
+.product-info {
+    width: 450px;
+    max-width: 80%;
+}
+.product-info img {
+    margin-bottom: 5px;
+    height: 350px;
+}
+.product-info p {
+    display: block;
+    margin: 0 80px;
+    text-align: left;
+}
+.product-info a {
+    font-size: 20px;
+    display: block;
+    text-align: center;
 }

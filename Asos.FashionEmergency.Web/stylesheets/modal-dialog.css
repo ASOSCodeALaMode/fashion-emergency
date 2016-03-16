@@ -1,0 +1,95 @@
+﻿.modal-dialog-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 150%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.modal-dialog {
+  position: fixed;
+  z-index: 101;
+  padding: 24px 20px;
+  padding: 1.5rem 20px;
+  background-color: #fff;
+  height: auto;
+  left: 50%;
+  max-height: 95%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1, M12=0, M21=0, M22=1, SizingMethod='auto expand')";
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+}
+
+.modal-dialog > div {
+  height: 530px;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-dialog h3,
+.modal-dialog .heading {
+  text-align: center;
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+.modal-dialog .content {
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.modal-dialog .content::-webkit-scrollbar {
+  width: 7px;
+}
+
+.modal-dialog .content::-webkit-scrollbar-track {
+  background: #ebebeb;
+  border-radius: 10px;
+}
+
+.modal-dialog .content::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+
+.modal-dialog .content::-webkit-scrollbar-thumb:window-inactive {
+  background: #c7c7c7;
+}
+
+.modal-dialog .content .modal-close {
+  top: 0;
+  right: 0;
+}
+
+.modal-dialog li {
+  margin-left: 22px;
+  margin-bottom: 14px;
+  list-style-type: disc;
+}
+
+.modal-dialog .modal-close {
+  background: #fff;
+  border: none;
+  font-family: serif;
+  height: 26px;
+  line-height: 0;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  right: 20px;
+  top: 24px;
+  width: 24px;
+  font-size: 48px;
+  font-size: 3rem;
+}

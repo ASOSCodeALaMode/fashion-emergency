@@ -102,8 +102,10 @@
     <Content Include="Global.asax" />
     <Content Include="images\asos-logo.png" />
     <Content Include="images\favicon.ico" />
+    <Content Include="scripts\view-product.js" />
     <Content Include="stylesheets\asos-asap.css" />
     <Content Include="stylesheets\cover.css" />
+    <Content Include="stylesheets\modal-dialog.css" />
     <Content Include="stylesheets\view-products.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -111,7 +113,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\OnTheDotController.cs" />
+    <Compile Include="Controllers\Product.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductPurchaseViewModel.cs" />
+    <Compile Include="Controllers\ProductRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
