@@ -27,7 +27,7 @@
             return this.Json(AvailableTimeSlotsData(storeId, postcode));
         }
 
-        private TimeSlotData AvailableTimeSlotsData(string storeId, string postcode)
+        public TimeSlotData AvailableTimeSlotsData(string storeId, string postcode)
         {
             var data = new TimeSlotRequest
                            {

@@ -1,4 +1,5 @@
-﻿@model Asos.FashionEmergency.Web.Controllers.ProductPurchaseViewModel
+﻿@using Asos.FashionEmergency.Web.Helpers
+@model Asos.FashionEmergency.Web.Controllers.ProductPurchaseViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -26,10 +27,21 @@
         @Html.TextBoxFor(m => m.PostCode, new { @readonly = true, @class = "form-control", @placeholder = "Enter postcode" })
     </fieldset>
     <fieldset class="form-group row">
-        @Html.LabelFor(m => m.DeliveryHour)
-        @Html.TextBoxFor(m => m.DeliveryHour, new {@class = "form-control", @placeholder = "Enter delivery hour"})
         <span class="field-validation-valid" data-valmsg-for="DeliveryHour" data-valmsg-replace="true"></span>
+        <ul>
+            @foreach (var timeslot in Model.TimeSlotInfo.timeslots)
+            {
+                <li>
+                    @Html.CheckedRadioButtonFor(m => m.SelectedTimeSlotId, timeslot.timeslotId, null, Model.TimeSlotInfo.timeslots.First() == timeslot)
+
+                    @timeslot.startTime.Hour:00 - @(timeslot.startTime.Hour + 1):00
+                </li>
+            }
+        </ul>
     </fieldset>
+
     @Html.HiddenFor(m => m.ProductId)
+    @Html.HiddenFor(m => m.TimeSlotInfo.uuid)
+
     <input type="submit" value="Buy now" />
 }
