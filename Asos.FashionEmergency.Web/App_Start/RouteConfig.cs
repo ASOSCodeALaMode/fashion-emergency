@@ -11,14 +11,14 @@ namespace Asos.FashionEmergency.Web
 
             routes.MapRoute(
                 name: "ViewProducts",
-                url: "postcode/{postcode}",
-                defaults: new { controller = "Home", action = "ViewProducts" }
+                url: "postcode/{postcode}/{category}",
+                defaults: new { controller = "Product", action = "ViewProducts", category = UrlParameter.Optional }
                 );
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "",
+                defaults: new { controller = "Product", action = "Index" }
                 );
         }
     }

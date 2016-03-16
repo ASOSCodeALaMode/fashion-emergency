@@ -1,6 +1,6 @@
 ﻿@model dynamic
 @{
-    Layout = "_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "ASOS ASAP";
 }
 @section Styles {
@@ -9,7 +9,7 @@
 <div class="cover-container">
     <div class="inner cover">
         <div class="brand">Asos Marketplace</div>
-        @using (Html.BeginForm("ViewProducts", "Home", FormMethod.Get))
+        @using (Html.BeginForm("Index", "Product"))
         {
             <label for="postcode">Postcode:</label>
             @Html.TextBox("postcode")
