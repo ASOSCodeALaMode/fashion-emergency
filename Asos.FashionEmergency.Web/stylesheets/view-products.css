@@ -40,4 +40,5 @@
 }
 .product-info {
     width: 450px;
+    max-width: 80%;
 }
