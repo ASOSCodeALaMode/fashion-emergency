@@ -51,10 +51,7 @@ body {
     vertical-align: middle;
 }
 
-.cover-container {
-    margin-right: auto;
-    margin-left: auto;
-}
+
 
 /* Padding for spacing */
 .inner {
@@ -74,15 +71,6 @@ body {
     background-image: url('../images/asos-logo.png');
     background-repeat: no-repeat;
     background-position: 0 0;
-}
-
-.cover > .brand {
-    margin: 0 auto 40px;
-}
-
-.cover .btn-lg {
-    padding: 10px 20px;
-    font-weight: bold;
 }
 
 /*
@@ -113,7 +101,6 @@ body {
 
 /* Handle the widths */
 .masthead,
-.mastfoot,
-.cover-container {
+.mastfoot {
     width: 100%; /* Must be percentage or pixels for horizontal alignment */
 }

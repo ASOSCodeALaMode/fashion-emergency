@@ -103,6 +103,7 @@
     <Content Include="images\asos-logo.png" />
     <Content Include="images\favicon.ico" />
     <Content Include="stylesheets\asos-asap.css" />
+    <Content Include="stylesheets\cover.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +121,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="Views\Home\ViewProducts.cshtml" />
+    <Content Include="Views\Home\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
