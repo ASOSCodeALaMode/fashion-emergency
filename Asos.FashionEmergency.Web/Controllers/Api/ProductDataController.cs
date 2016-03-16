@@ -23,7 +23,7 @@
 
         [AllowAnonymous]
         [HttpGet]
-        private List<> GetData()
+        private object GetData()
         {
             var client = new DocumentClient(new Uri(EndpointUrl), AuthorizationKey);   
             var database =

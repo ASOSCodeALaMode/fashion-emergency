@@ -67,42 +67,43 @@
         public IHttpActionResult CreateBooking(string storeId, string postCode, string timeslotId, string uuid)
         {
             var client = new RestClient(ApiUrl);
-            var response = client.Execute(CreateBookingRequest(storeId, postCode, timeslotId, uuid));
+            var response = client.Execute(CreateBookingRequest(storeId, "Called from API", "Called from API", postCode, timeslotId, uuid));
 
             return Json(response.Content);
         }
 
-        public bool CreateBookingData(string storeId, string postCode, string timeslotId, string uuid)
+        public bool CreateBookingData(string storeId, string name, string address, string postCode, string timeslotId, string uuid)
         {
             var client = new RestClient(ApiUrl);
-            var response = client.Execute<CreateBookingResponse>(CreateBookingRequest(storeId, postCode, timeslotId, uuid));
+            var response = client.Execute<CreateBookingResponse>(CreateBookingRequest(storeId, name, address, postCode, timeslotId, uuid));
 
             return response.Data.data.status == "Booked";
         }
 
-        private RestRequest CreateBookingRequest(string storeId, string postCode, string timeslotId, string uuid)
+        private RestRequest CreateBookingRequest(string storeId, string name, string address, string postCode, string timeslotId, string uuid)
         {
             var data = new CreateBookingRequest
-                           {
-                               consumer =
-                                   new Consumer
-                                       {
-                                           address =
-                                               new Address
-                                                   {
-                                                       city = "London",
-                                                       postCode = postCode,
-                                                       firstLine = "11 giberrish"
-                                                   },
-                                           name = "Test Name",
-                                           mobileNumber = "7777777777"
-                                       },
-                               item = new DeliveryItems { itemContentCount = 1 },
-                               orderType = "1",
-                               store = new Store { storeId = storeId },
-                               supplierId = "CitySprint",
-                               timeslot = new TimeSlotBase { timeslotId = timeslotId }
-                           };
+
+            {
+                consumer =
+                    new Consumer
+                    {
+                        address =
+                            new Address
+                            {
+                                city = "London",
+                                postCode = postCode,
+                                firstLine = address
+                            },
+                        name = name,
+                        mobileNumber = "7777777777"
+                    },
+                item = new DeliveryItems { itemContentCount = 1 },
+                orderType = "1",
+                store = new Store { storeId = storeId },
+                supplierId = "CitySprint",
+                timeslot = new TimeSlotBase { timeslotId = timeslotId }
+            };
 
             var request = new RestRequest(ApiBooking, Method.POST);
             request.AddHeader("Authorization", string.Format("Bearer {0}", ApiKey));
@@ -110,6 +111,7 @@
             request.AddHeader("UUID", uuid);
             request.RequestFormat = DataFormat.Json;
             request.AddBody(data);
+
             return request;
         }
     }

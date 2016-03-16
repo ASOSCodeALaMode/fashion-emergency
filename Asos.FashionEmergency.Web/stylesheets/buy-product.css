@@ -1,0 +1,14 @@
+﻿fieldset label {
+    float: left;
+}
+form {
+    width: 80%;
+    text-align: center;
+    display: inline-block;
+}
+li {
+    list-style-type: none;
+    border: 1px solid #ccc;
+    background: whitesmoke;
+    margin: 2px;
+}

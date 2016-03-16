@@ -10,7 +10,7 @@ namespace Asos.FashionEmergency.Web.Controllers
             new Product
             {
                 Id = 1,
-                StoreId = 2,
+                StoreId = "Asos-02",
                 Name = "Red t-shirt",
                 Description = "A nice red t-shirt",
                 Price = 29.99m,
@@ -20,7 +20,7 @@ namespace Asos.FashionEmergency.Web.Controllers
             new Product
             {
                 Id = 2,
-                StoreId = 4,
+                StoreId = "Asos-04",
                 Name = "Green t-shirt",
                 Description = "A nice green t-shirt",
                 Price = 19.99m,
@@ -30,7 +30,7 @@ namespace Asos.FashionEmergency.Web.Controllers
             new Product
             {
                 Id = 3,
-                StoreId = 5,
+                StoreId = "Asos-05",
                 Name = "Blue t-shirt",
                 Description = "A nice blue t-shirt",
                 Price = 39.99m,

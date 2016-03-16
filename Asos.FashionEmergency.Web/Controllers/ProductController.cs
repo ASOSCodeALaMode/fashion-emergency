@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Web.Mvc;
+using Asos.FashionEmergency.Web.Controllers.Api;
 
 namespace Asos.FashionEmergency.Web.Controllers
 {
     public class ProductController : Controller
     {
         private readonly ProductRepository productRepository = new ProductRepository();
+        private readonly OnTheDotController bookingController = new OnTheDotController();
 
         [HttpGet]
         public ActionResult Index()
@@ -34,13 +36,36 @@ namespace Asos.FashionEmergency.Web.Controllers
         [HttpGet]
         public ActionResult BuyProduct(string postcode, int productId)
         {
-            return View(new ProductPurchaseViewModel { ProductId = productId, PostCode = ViewBag.PostCode });
+            var product = productRepository.GetProductById(productId);
+
+            var timeslots = bookingController.AvailableTimeSlotsData(product.StoreId, postcode);
+
+            return View(new ProductPurchaseViewModel
+            {
+                ProductId = productId,
+                PostCode = ViewBag.PostCode,
+                TimeSlotInfo = timeslots
+            });
         }
 
         [HttpPost]
         public ActionResult BuyProduct(ProductPurchaseViewModel model)
         {
-            if (ModelState.IsValid) return RedirectToAction("OrderComplete");
+            if (ModelState.IsValid)
+            {
+
+                var product = productRepository.GetProductById(model.ProductId);
+
+                bookingController.CreateBookingData(
+                    product.StoreId,
+                    model.Name,
+                    model.Address,
+                    model.PostCode,
+                    model.SelectedTimeSlotId,
+                    model.TimeSlotInfo.uuid);
+
+                return RedirectToAction("OrderComplete");
+            }
 
             return View(model);
         }
