@@ -17,6 +17,12 @@
     width: 100%;
     color: white;
  }
+@media only screen and (max-width: 530px) {
+   .product .detail  { font-size: 30px; }
+}
+@media only screen and (max-width: 430px) {
+   .product .detail  { font-size: 22px; }
+}
 .price, .availability {
     position: relative
 }
