@@ -1,7 +1,12 @@
-﻿@model dynamic
-
-@{
-    ViewBag.Title = "title";
+﻿@{
+    ViewBag.Title = "ASOS ASAP";
 }
 
-<h2>ASOS Fashion Emergency</h2>
+<h1>ASOS ASAP</h1>
+
+@using (Html.BeginForm("ViewProducts", "Home", FormMethod.Get))
+{
+    @Html.TextBox("postcode")
+
+    <input type="submit" value="Find things near me" />
+}
