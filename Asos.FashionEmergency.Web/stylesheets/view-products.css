@@ -1,17 +1,11 @@
 ﻿.product {
     padding: 0;
-    margin: 5px;
-    -webkit-box-shadow: 0 0 18px 2px rgba(144,144,144,1);
-    -moz-box-shadow: 0 0 18px 2px rgba(144,144,144,1);
-    box-shadow: 0 0 18px 2px rgba(144,144,144,1);
 }
-
 .product > img {
     display: block;
     height: auto;
     width: 100%;
 }
-
 .product > .detail  {
     background-color: rgba(0,0,0,0.6);
     font-size: 40px;
@@ -23,21 +17,18 @@
     width: 100%;
     color: white;
  }
-
-.product > .detail > .price, .product > .detail > .availability {
+.price, .availability {
     position: relative
 }
-
-.product > .detail > .price {
+.price {
     float: right
 }
-.product > .detail > .price:before {
+.price:before {
     content: '£';
 }
-
-.product > .detail > .availability {
+.availability {
     float: left
 }
-.product > .detail > .availability:after {
+.availability:after {
     content: 'HR';
 }
