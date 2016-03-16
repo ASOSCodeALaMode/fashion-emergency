@@ -12,7 +12,7 @@
         @using (Html.BeginForm("Index", "Product"))
         {
             <label for="postcode">Postcode:</label>
-            @Html.TextBox("postcode")
+            @Html.TextBox("postcode", null, new { style = "text-transform: uppercase;" })
             <input type="submit" value="Find things near me" />
         }
     </div>

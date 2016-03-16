@@ -1,7 +1,7 @@
 ﻿@model List<Asos.FashionEmergency.Web.Controllers.Product>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "ASOS ASAP - Products";
+    ViewBag.Title = string.Format("ASOS ASAP - Products for {0}", (ViewContext.RouteData.Values["postcode"]));
 }
 @section Styles {
     <link href="@Url.Content("~/stylesheets/view-products.css")" rel="stylesheet" type="text/css"/>

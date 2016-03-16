@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace Asos.FashionEmergency.Web.Controllers
@@ -14,7 +15,7 @@ namespace Asos.FashionEmergency.Web.Controllers
         [HttpPost]
         public ActionResult Index(string postcode)
         {
-            return RedirectToAction("ViewProducts", new { postcode = postcode });
+            return RedirectToAction("ViewProducts", new { postcode = postcode.Replace(" ", String.Empty).ToUpper() });
         }
 
         [HttpGet]
@@ -55,7 +56,7 @@ namespace Asos.FashionEmergency.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult ViewProduct(int productId)
+        public ActionResult ViewProduct(string postcode, int productId)
         {
             return View(new Product
             {
@@ -69,9 +70,9 @@ namespace Asos.FashionEmergency.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult BuyProduct(int productId)
+        public ActionResult BuyProduct(string postcode, int productId)
         {
-            return View(new ProductPurchaseViewModel { ProductId = productId });
+            return View(new ProductPurchaseViewModel { ProductId = productId, PostCode = ViewBag.PostCode });
         }
 
         [HttpPost]
@@ -87,25 +88,5 @@ namespace Asos.FashionEmergency.Web.Controllers
         {
             return View();
         }
-    }
-
-    public class ProductPurchaseViewModel
-    {
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string PostCode { get; set; }
-        public string CreditCardNumber { get; set; }
-        public int DeliveryHour { get; set; }
-        public int ProductId { get; set; }
-    }
-
-    public class Product
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
-        public int Availability { get; set; }
-        public string ImageUrl { get; set; }
     }
 }

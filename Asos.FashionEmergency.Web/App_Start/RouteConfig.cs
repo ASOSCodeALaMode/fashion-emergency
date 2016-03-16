@@ -17,13 +17,13 @@ namespace Asos.FashionEmergency.Web
 
             routes.MapRoute(
                 name: "ViewProduct",
-                url: "product/{productId}",
+                url: "postcode/{postcode}/product/{productId}",
                 defaults: new { controller = "Product", action = "ViewProduct" }
                 );
 
             routes.MapRoute(
                 name: "BuyProduct",
-                url: "product/{productId}/buy",
+                url: "postcode/{postcode}/product/{productId}/buy",
                 defaults: new { controller = "Product", action = "BuyProduct" }
                 );
 
