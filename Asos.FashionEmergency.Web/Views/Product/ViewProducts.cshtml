@@ -4,7 +4,11 @@
     ViewBag.Title = "ASOS ASAP - Products";
 }
 @section Styles {
-    <link href="@Url.Content("~/stylesheets/view-products.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/stylesheets/view-products.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/stylesheets/modal-dialog.css")" rel="stylesheet" type="text/css" />
+}
+@section Scripts {
+    <script src="@Url.Content("~/scripts/view-product.js")"></script>
 }
 <div class="row">
     @foreach (var product in Model)
@@ -19,4 +23,12 @@
             </a>
         </div>
     }
+</div>
+<div id="overlay" class="modal-dialog-overlay" style="display:none"></div>
+<div class="modal-dialog product-info" style="display:none">
+    <div>
+        <div class="content">
+        </div>
+    </div>
+    <button class="modal-close" type="button">&times;</button>
 </div>

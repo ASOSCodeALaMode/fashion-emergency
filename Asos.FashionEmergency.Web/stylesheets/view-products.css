@@ -38,3 +38,6 @@
 .availability:after {
     content: 'HR';
 }
+.product-info {
+    width: 450px;
+}

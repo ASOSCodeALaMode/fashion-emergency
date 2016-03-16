@@ -102,8 +102,10 @@
     <Content Include="Global.asax" />
     <Content Include="images\asos-logo.png" />
     <Content Include="images\favicon.ico" />
+    <Content Include="scripts\view-product.js" />
     <Content Include="stylesheets\asos-asap.css" />
     <Content Include="stylesheets\cover.css" />
+    <Content Include="stylesheets\modal-dialog.css" />
     <Content Include="stylesheets\view-products.css" />
     <Content Include="Web.config" />
   </ItemGroup>
