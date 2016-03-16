@@ -1,0 +1,16 @@
+﻿@model Asos.FashionEmergency.Web.Controllers.Product
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = string.Format("ASOS ASAP - {0}", @Model.Name);
+}
+@section Styles {
+    <link href="@Url.Content("~/stylesheets/view-products.css")" rel="stylesheet" type="text/css" />
+}
+
+<h2>@Model.Name</h2>
+<p>@Model.Description</p>
+<p>£@Model.Price @Model.Availability HR</p>
+<img src="@Model.ImageUrl" />
+
+<p>@Html.ActionLink("Buy now", "BuyProduct", new { productId = Model.Id })</p>

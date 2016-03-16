@@ -10,9 +10,33 @@ namespace Asos.FashionEmergency.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "ViewProducts",
+                url: "postcode/{postcode}/{category}",
+                defaults: new { controller = "Product", action = "ViewProducts", category = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
+                name: "ViewProduct",
+                url: "product/{productId}",
+                defaults: new { controller = "Product", action = "ViewProduct" }
+                );
+
+            routes.MapRoute(
+                name: "BuyProduct",
+                url: "product/{productId}/buy",
+                defaults: new { controller = "Product", action = "BuyProduct" }
+                );
+
+            routes.MapRoute(
+                name: "OrderComplete",
+                url: "ordercomplete",
+                defaults: new { controller = "Product", action = "OrderComplete" }
+                );
+            routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+                url: "",
+                defaults: new { controller = "Product", action = "Index" }
+                );
         }
     }
 }

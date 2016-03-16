@@ -99,15 +99,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\SampleStore.json" />
     <Content Include="Global.asax" />
+    <Content Include="images\asos-logo.png" />
+    <Content Include="images\favicon.ico" />
+    <Content Include="stylesheets\asos-asap.css" />
+    <Content Include="stylesheets\cover.css" />
+    <Content Include="stylesheets\view-products.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\OnTheDotController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -117,8 +121,14 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Data\SampleStore.json" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <Content Include="Views\Product\ViewProducts.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Product\ViewProduct.cshtml" />
+    <Content Include="Views\Product\BuyProduct.cshtml" />
+    <Content Include="Views\Product\OrderComplete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -140,7 +150,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53508</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
@@ -163,7 +173,7 @@
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+  <TargetTarget Name="BeforeBuildBeforeBuild">
   </Target>
   <Target Name="AfterBuild">
   </Target>

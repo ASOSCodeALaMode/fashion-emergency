@@ -1,0 +1,14 @@
+﻿.cover-container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+}
+
+.cover > .brand {
+    margin: 0 auto 40px;
+}
+
+.cover .btn-lg {
+    padding: 10px 20px;
+    font-weight: bold;
+}
