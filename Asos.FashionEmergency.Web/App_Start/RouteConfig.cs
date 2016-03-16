@@ -16,6 +16,18 @@ namespace Asos.FashionEmergency.Web
                 );
 
             routes.MapRoute(
+                name: "ViewProduct",
+                url: "product/{productId}",
+                defaults: new { controller = "Product", action = "ViewProduct" }
+                );
+
+            routes.MapRoute(
+                name: "BuyProduct",
+                url: "product/{productId}/buy",
+                defaults: new { controller = "Product", action = "BuyProduct" }
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "",
                 defaults: new { controller = "Product", action = "Index" }

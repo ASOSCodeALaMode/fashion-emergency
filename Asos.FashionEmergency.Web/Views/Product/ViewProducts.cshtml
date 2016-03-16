@@ -16,7 +16,7 @@
                 <div class="price">@product.Price</div>
             </div>
             <!--
-            <h2>@product.Name</h2>
+            <h2>@Html.ActionLink(product.Name, "ViewProduct", new { productId = product.Id })</h2>
             <p>@product.Description</p>
             -->
         </div>

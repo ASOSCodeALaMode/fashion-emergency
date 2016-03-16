@@ -24,6 +24,7 @@ namespace Asos.FashionEmergency.Web.Controllers
             {
                 new Product
                 {
+                    Id = 1,
                     Name = "Red t-shirt",
                     Description = "A nice red t-shirt",
                     Price = 29.99m,
@@ -32,14 +33,16 @@ namespace Asos.FashionEmergency.Web.Controllers
                 },
                 new Product
                 {
+                    Id = 2,
                     Name = "Green t-shirt",
                     Description = "A nice green t-shirt",
                     Price = 19.99m,
                     Availability = 1,
                     ImageUrl = "http://images.asos-media.com/inv/media/3/0/0/3/5173003/khaki/image1xl.jpg"
                 },
-                new Product
+                new Product 
                 {
+                    Id = 3,
                     Name = "Blue t-shirt",
                     Description = "A nice blue t-shirt",
                     Price = 39.99m,
@@ -50,10 +53,37 @@ namespace Asos.FashionEmergency.Web.Controllers
 
             return View(dummyProducts);
         }
+
+        [HttpGet]
+        public ActionResult ViewProduct(int productId)
+        {
+            return View(new Product
+            {
+                Name = "Blue t-shirt",
+                Description = "A nice blue t-shirt",
+                Price = 39.99m,
+                Availability = 4,
+                ImageUrl = "http://images.asos.com/image1.jpg"
+            });
+        }
+
+        [HttpGet]
+        public ActionResult BuyProduct(int productId)
+        {
+            return View(new Product
+            {
+                Name = "Blue t-shirt",
+                Description = "A nice blue t-shirt",
+                Price = 39.99m,
+                Availability = 4,
+                ImageUrl = "http://images.asos.com/image1.jpg"
+            });
+        }
     }
 
     public class Product
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
