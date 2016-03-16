@@ -58,10 +58,10 @@
         [HttpGet]
         public IHttpActionResult CreateBooking(string storeId, string postCode, string timeslotId, string uuid)
         {
-            return Json(CreateBookingData(storeId, postCode, timeslotId, uuid));
+            return Json(CreateBookingData(storeId, "Called from API", "Called from API", postCode, timeslotId, uuid));
         }
 
-        public bool CreateBookingData(string storeId, string postCode, string timeslotId, string uuid)
+        public bool CreateBookingData(string storeId, string name, string address, string postCode, string timeslotId, string uuid)
         {
             var data = new CreateBookingRequest
             {
@@ -73,9 +73,9 @@
                             {
                                 city = "London",
                                 postCode = postCode,
-                                firstLine = "11 giberrish"
+                                firstLine = address
                             },
-                        name = "Test Name",
+                        name = name,
                         mobileNumber = "7777777777"
                     },
                 item = new DeliveryItems { itemContentCount = 1 },

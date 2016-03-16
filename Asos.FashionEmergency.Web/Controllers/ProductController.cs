@@ -53,10 +53,13 @@ namespace Asos.FashionEmergency.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 var product = productRepository.GetProductById(model.ProductId);
 
                 bookingController.CreateBookingData(
                     product.StoreId,
+                    model.Name,
+                    model.Address,
                     model.PostCode,
                     model.SelectedTimeSlotId,
                     model.TimeSlotInfo.uuid);
