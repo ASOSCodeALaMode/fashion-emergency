@@ -3,14 +3,22 @@ using System.Web.Mvc;
 
 namespace Asos.FashionEmergency.Web.Controllers
 {
-    public class HomeController : Controller
+    public class ProductController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult ViewProducts(string postcode)
+        [HttpPost]
+        public ActionResult Index(string postcode)
+        {
+            return RedirectToAction("ViewProducts", new { postcode = postcode });
+        }
+
+        [HttpGet]
+        public ActionResult ViewProducts(string postcode, string category = "")
         {
             var dummyProducts = new List<Product>
             {
