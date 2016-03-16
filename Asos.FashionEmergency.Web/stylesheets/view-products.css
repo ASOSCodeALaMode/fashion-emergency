@@ -1,12 +1,12 @@
 ﻿.product {
     padding: 0;
 }
-.product > img {
+.product img {
     display: block;
     height: auto;
     width: 100%;
 }
-.product > .detail  {
+.product .detail  {
     background-color: rgba(0,0,0,0.6);
     font-size: 40px;
     line-height: 65px;

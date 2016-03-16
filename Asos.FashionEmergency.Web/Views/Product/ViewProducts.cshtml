@@ -10,13 +10,13 @@
     @foreach (var product in Model)
     {
         <div class="product col-lg-3 col-sm-4 col-xs-6">
-            <img src="@product.ImageUrl"/>
-            <div class="detail">
-                <div class="availability">@product.Availability</div>
-                <div class="price">@product.Price</div>
-            </div>
-            <h2>@Html.ActionLink(product.Name, "ViewProduct", new { productId = product.Id })</h2>
-            <p>@product.Description</p>
+            <a href="@Url.Action("ViewProduct", new {productId = product.Id})" alt="@product.Description">
+                <img src="@product.ImageUrl" />
+                <div class="detail">
+                    <div class="availability">@product.Availability</div>
+                    <div class="price">@product.Price</div>
+                </div>
+            </a>
         </div>
     }
 </div>
