@@ -24,23 +24,34 @@
         [HttpGet]
         public IHttpActionResult AvailableTimeSlots(string storeId, string postcode)
         {
-            return this.Json(AvailableTimeSlotsData(storeId, postcode));
+            var client = new RestClient(ApiUrl);
+            var response = client.Execute(TimeSlotRequest(storeId, postcode));
+
+            return this.Json(response.Content);
         }
 
-        private TimeSlotData AvailableTimeSlotsData(string storeId, string postcode)
+        public TimeSlotData AvailableTimeSlotsData(string storeId, string postcode)
+        {
+            var client = new RestClient(ApiUrl);
+            var response = client.Execute<TimeSlotResponse>(TimeSlotRequest(storeId, postcode));
+
+            return response.Data.data;
+        }
+
+        private RestRequest TimeSlotRequest(string storeId, string postcode)
         {
             var data = new TimeSlotRequest
-                           {
-                               store = new Store { storeId = storeId },
-                               consumer =
-                                   new ConsumerPostCode { address = new Address { postCode = postcode } },
-                               items =
-                                   new Items
-                                       {
-                                           deliveryDate = this.dateForDelivery.ToString("yyyy-MM-dd"),
-                                           readyAt = this.dateForDelivery.ToString("s") + "Z"
-                                       }
-                           };
+            {
+                store = new Store { storeId = storeId },
+                consumer =
+                    new ConsumerPostCode { address = new Address { postCode = postcode } },
+                items =
+                    new Items
+                    {
+                        deliveryDate = this.dateForDelivery.ToString("yyyy-MM-dd"),
+                        readyAt = this.dateForDelivery.ToString("s") + "Z"
+                    }
+            };
 
             var request = new RestRequest(ApiTimeSlots, Method.POST);
             request.AddHeader("Authorization", string.Format("Bearer {0}", ApiKey));
@@ -48,42 +59,50 @@
             request.RequestFormat = DataFormat.Json;
             request.AddBody(data);
 
-            var client = new RestClient(ApiUrl);
-            var response = client.Execute<TimeSlotResponse>(request);
-
-            return response.Data.data;
+            return request;
         }
 
         [AllowAnonymous]
         [HttpGet]
         public IHttpActionResult CreateBooking(string storeId, string postCode, string timeslotId, string uuid)
         {
-            return Json(CreateBookingData(storeId, postCode, timeslotId, uuid));
+            var client = new RestClient(ApiUrl);
+            var response = client.Execute(CreateBookingRequest(storeId, postCode, timeslotId, uuid));
+
+            return Json(response.Content);
         }
 
         public bool CreateBookingData(string storeId, string postCode, string timeslotId, string uuid)
         {
+            var client = new RestClient(ApiUrl);
+            var response = client.Execute<CreateBookingResponse>(CreateBookingRequest(storeId, postCode, timeslotId, uuid));
+
+            return response.Data.data.status == "Booked";
+        }
+
+        private RestRequest CreateBookingRequest(string storeId, string postCode, string timeslotId, string uuid)
+        {
             var data = new CreateBookingRequest
-            {
-                consumer =
-                    new Consumer
-                    {
-                        address =
-                            new Address
-                            {
-                                city = "London",
-                                postCode = postCode,
-                                firstLine = "11 giberrish"
-                            },
-                        name = "Test Name",
-                        mobileNumber = "7777777777"
-                    },
-                item = new DeliveryItems { itemContentCount = 1 },
-                orderType = "1",
-                store = new Store { storeId = storeId },
-                supplierId = "CitySprint",
-                timeslot = new TimeSlotBase { timeslotId = timeslotId }
-            };
+                           {
+                               consumer =
+                                   new Consumer
+                                       {
+                                           address =
+                                               new Address
+                                                   {
+                                                       city = "London",
+                                                       postCode = postCode,
+                                                       firstLine = "11 giberrish"
+                                                   },
+                                           name = "Test Name",
+                                           mobileNumber = "7777777777"
+                                       },
+                               item = new DeliveryItems { itemContentCount = 1 },
+                               orderType = "1",
+                               store = new Store { storeId = storeId },
+                               supplierId = "CitySprint",
+                               timeslot = new TimeSlotBase { timeslotId = timeslotId }
+                           };
 
             var request = new RestRequest(ApiBooking, Method.POST);
             request.AddHeader("Authorization", string.Format("Bearer {0}", ApiKey));
@@ -91,11 +110,7 @@
             request.AddHeader("UUID", uuid);
             request.RequestFormat = DataFormat.Json;
             request.AddBody(data);
-
-            var client = new RestClient(ApiUrl);
-            var response = client.Execute<CreateBookingResponse>(request);
-
-            return response.Data.data.status == "Booked";
+            return request;
         }
     }
 
