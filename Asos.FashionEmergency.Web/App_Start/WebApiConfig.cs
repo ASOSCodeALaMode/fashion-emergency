@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace Asos.FashionEmergency.Web
 {
@@ -19,6 +16,11 @@ namespace Asos.FashionEmergency.Web
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+               name: "OnTheDotApi",
+               routeTemplate: "api/{controller}/{action}/{storeId}/{postcode}"
+           );
         }
     }
 }
