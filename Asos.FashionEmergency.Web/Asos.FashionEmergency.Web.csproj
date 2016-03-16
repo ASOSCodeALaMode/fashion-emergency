@@ -101,6 +101,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="images\asos-logo.png" />
+    <Content Include="images\favicon.ico" />
     <Content Include="stylesheets\asos-asap.css" />
     <Content Include="Web.config" />
   </ItemGroup>
