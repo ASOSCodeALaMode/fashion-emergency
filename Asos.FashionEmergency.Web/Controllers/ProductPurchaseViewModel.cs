@@ -1,4 +1,5 @@
-﻿using Asos.FashionEmergency.Web.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using Asos.FashionEmergency.Web.Models;
 
 namespace Asos.FashionEmergency.Web.Controllers
 {
@@ -10,6 +11,8 @@ namespace Asos.FashionEmergency.Web.Controllers
         public string CreditCardNumber { get; set; }
         public int ProductId { get; set; }
         public TimeSlotData TimeSlotInfo { get; set; }
+
+        [Display(Name = "Delivery Time Slot")]
         public string SelectedTimeSlotId { get; set; }
     }
 }

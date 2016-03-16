@@ -27,21 +27,16 @@
         @Html.TextBoxFor(m => m.PostCode, new { @readonly = true, @class = "form-control", @placeholder = "Enter postcode" })
     </fieldset>
     <fieldset class="form-group row">
+        @Html.LabelFor(m => m.SelectedTimeSlotId)
         <span class="field-validation-valid" data-valmsg-for="DeliveryHour" data-valmsg-replace="true"></span>
-        <ul>
-            @foreach (var timeslot in Model.TimeSlotInfo.timeslots)
-            {
-                <li>
-                    @Html.CheckedRadioButtonFor(m => m.SelectedTimeSlotId, timeslot.timeslotId, null, Model.TimeSlotInfo.timeslots.First() == timeslot)
-
-                    @timeslot.startTime.Hour:00 - @(timeslot.startTime.Hour + 1):00
-                </li>
-            }
-        </ul>
+        @Html.DropDownListFor(m => m.SelectedTimeSlotId, Model.TimeSlotInfo.timeslots.Select(timeslot => new SelectListItem
+        {
+            Value = timeslot.timeslotId,
+            Text = timeslot.startTime.Hour + ":00 - " + (timeslot.startTime.Hour + 1) + ":00",
+            Selected = Model.TimeSlotInfo.timeslots.First() == timeslot
+        }), new { @class = "form-control" })
     </fieldset>
-
     @Html.HiddenFor(m => m.ProductId)
     @Html.HiddenFor(m => m.TimeSlotInfo.uuid)
-
     <input type="submit" value="Buy now" />
 }
