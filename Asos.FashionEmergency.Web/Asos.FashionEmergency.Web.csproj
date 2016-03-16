@@ -125,6 +125,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Product\ViewProduct.cshtml" />
     <Content Include="Views\Product\BuyProduct.cshtml" />
+    <Content Include="Views\Product\OrderComplete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

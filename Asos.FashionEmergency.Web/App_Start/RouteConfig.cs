@@ -28,6 +28,12 @@ namespace Asos.FashionEmergency.Web
                 );
 
             routes.MapRoute(
+                name: "OrderComplete",
+                url: "ordercomplete",
+                defaults: new { controller = "Product", action = "OrderComplete" }
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "",
                 defaults: new { controller = "Product", action = "Index" }

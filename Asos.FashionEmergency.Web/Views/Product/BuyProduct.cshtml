@@ -1,5 +1,28 @@
-﻿@model Asos.FashionEmergency.Web.Controllers.Product
+﻿@model Asos.FashionEmergency.Web.Controllers.ProductPurchaseViewModel
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "ASOS ASAP - Products";
+}
+@section Styles {
+    <link href="@Url.Content("~/stylesheets/view-products.css")" rel="stylesheet" type="text/css" />
+}
+
+@using (Html.BeginForm("BuyProduct", "Product"))
+{
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name)
+    
+    @Html.LabelFor(m => m.Address)
+    @Html.TextBoxFor(m => m.Address)
+    
+    @Html.LabelFor(m => m.PostCode)
+    @Html.TextBoxFor(m => m.PostCode, new { @readonly = true })
+    
+    @Html.LabelFor(m => m.DeliveryHour)
+    @Html.TextBoxFor(m => m.DeliveryHour)
+
+    @Html.HiddenFor(m => m.ProductId)
+
+    <input type="submit" value="Buy now" />
 }
