@@ -11,7 +11,7 @@ namespace Asos.FashionEmergency.Web
 
             routes.MapRoute(
                 name: "ViewProducts",
-                url: "postcode/{postcode}/{category}",
+                url: "postcode/{postcode}/{floor}/{category}",
                 defaults: new { controller = "Product", action = "ViewProducts", category = UrlParameter.Optional }
                 );
 

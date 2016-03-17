@@ -62,3 +62,34 @@
     display: block;
     text-align: center;
 }
+.heading {
+    height: 80px;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background: white;
+    box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+.heading img {
+    position: relative;
+    float: left;
+    height: 50px;
+    margin: 10px;
+}
+.heading .selects {
+    width: 50%;
+    float: right;
+    margin: 20px 10px;
+}
+.heading select {
+    width: 50%;
+    float: right;
+}
+@media only screen and (max-width: 490px) {
+   .heading select  { font-size: 12px; }
+}
+.scroll {
+    margin-top: 70px;
+}

@@ -1,4 +1,4 @@
-﻿@model IList<Asos.FashionEmergency.Web.Controllers.Product>
+﻿@model Asos.FashionEmergency.Web.Controllers.ViewProductsViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = string.Format("ASOS ASAP - Products for {0}", (ViewContext.RouteData.Values["postcode"]));
@@ -10,25 +10,42 @@
 @section Scripts {
     <script src="@Url.Content("~/scripts/view-product.js")"></script>
 }
-
-<div class="container">
-    <div class="jumbotron">
-        <img src="~/images/asos-logo.png" />
+<div class="heading">
+    <img src="~/images/asos-logo.png"/>
+    <div class="selects">
+        @using (Html.BeginForm("Index", "Product"))
+        {
+            @Html.DropDownListFor(m => m.Category, Model.Categories.Select(category => new SelectListItem
+            {
+                Value = category,
+                Text = category == "" ? "Everything" : category,
+                Selected = Model.Category == category
+            }), new { @class = "form-control", onchange = "this.form.submit();" })
+            @Html.DropDownListFor(m => m.Floor, Model.Floors.Select(floor => new SelectListItem
+            {
+                Value = floor,
+                Text = floor == "-" ? "All" : floor,
+                Selected = Model.Floor == floor
+            }), new { @class = "form-control", onchange = "this.form.submit();" })
+            <input type="hidden" name="postcode" value="@(ViewContext.RouteData.Values["postcode"])" />
+        }
     </div>
 </div>
-<div class="row">
-    @foreach (var product in Model)
-    {
-        <div class="product col-lg-3 col-sm-4 col-xs-6">
-            <a href="@Url.Action("ViewProduct", new {productId = product.Id})" alt="@product.Description">
-                <img src="@product.ImageUrl" />
-                <div class="detail">
-                    <div class="availability">@product.Availability</div>
-                    <div class="price">@product.Price</div>
-                </div>
-            </a>
-        </div>
-    }
+<div class="scroll">
+    <div class="row">
+        @foreach (var product in Model.Products)
+        {
+            <div class="product col-lg-3 col-sm-4 col-xs-6">
+                <a href="@Url.Action("ViewProduct", new {productId = product.Id})" alt="@product.Description">
+                    <img src="@product.ImageUrl" />
+                    <div class="detail">
+                        <div class="availability">@product.Availability</div>
+                        <div class="price">@product.Price</div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
 </div>
 <div id="overlay" class="modal-dialog-overlay" style="display:none"></div>
 <div class="modal-dialog product-info" style="display:none">

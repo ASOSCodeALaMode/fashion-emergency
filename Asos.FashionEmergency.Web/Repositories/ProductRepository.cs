@@ -123,6 +123,8 @@ namespace Asos.FashionEmergency.Web.Repositories
                            Id = int.Parse(product.Id),
                            Name = product.ItemName,
                            Description = product.ItemDescription,
+                           Category = product.Category,
+                           Floor = product.Floor,
                            ImageUrl = product.Images.FirstOrDefault(),
                            Price = product.Price,
                            StoreId = product.Boutique.Id,

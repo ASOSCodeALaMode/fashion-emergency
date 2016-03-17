@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Asos.FashionEmergency.Web.Controllers.Api;
 using Asos.FashionEmergency.Web.Repositories;
@@ -18,15 +19,21 @@ namespace Asos.FashionEmergency.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string postcode)
+        public ActionResult Index(string postcode, string floor = "-", string category = "")
         {
-            return RedirectToAction("ViewProducts", new { postcode = postcode.Replace(" ", String.Empty).ToUpper() });
+            return RedirectToAction("ViewProducts", new { postcode = postcode.Replace(" ", String.Empty).ToUpper(), category, floor });
         }
 
         [HttpGet]
-        public ActionResult ViewProducts(string postcode, string category = "")
+        public ActionResult ViewProducts(string postcode, string floor = "-", string category = "")
         {
-            return View(productRepository.GetProductsForPostCode(postcode));
+            var allProducts = productRepository.GetProductsForPostCode(postcode);
+            var categories = allProducts.Select(p => p.Category).Distinct().OrderBy(c => c).ToList();
+            var floors = allProducts.Select(p => p.Floor).Distinct().Concat(new[] { "-" }).OrderBy(c => c).ToList();
+            var displayProducts = category == "" ? allProducts : allProducts.Where(p => p.Category == category).ToList();
+            displayProducts = floor == "-" ? displayProducts : displayProducts.Where(p => p.Floor == floor).ToList();
+
+            return View(new ViewProductsViewModel { Products = displayProducts, Categories = categories, Floors = floors });
         }
 
         [HttpGet]

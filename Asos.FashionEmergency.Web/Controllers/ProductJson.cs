@@ -19,6 +19,10 @@
         public IEnumerable<string> Images { get; set; }
 
         public BoutiqueDb Boutique { get; set; }
+
+        public string Category { get; set; }
+
+        public string Floor { get; set; }
     }
 
     public class Info

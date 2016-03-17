@@ -132,6 +132,7 @@
     <Compile Include="Controllers\Product.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductPurchaseViewModel.cs" />
+    <Compile Include="Controllers\ViewProductsViewModel.cs" />
     <Compile Include="Models\OpeningTimeDetails.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\StoreRepository.cs" />

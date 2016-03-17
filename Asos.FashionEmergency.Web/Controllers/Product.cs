@@ -25,5 +25,8 @@
 
         public string StorePostCode { get; set; }
 
+        public string Category { get; set; }
+
+        public string Floor { get; set; }
     }
 }
