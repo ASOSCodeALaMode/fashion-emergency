@@ -65,11 +65,14 @@ namespace Asos.FashionEmergency.Web.Repositories
             var client = DocumentDbClient(out database, out productCollection);
 
             var productList = new List<Product>();
+
+            //WHERE ST_DISTANCE(p.boutique.location, { " + "\"type\": \"Point\", "
+            //        + "\"coordinates\": [" + ServiceCentreLngLat + "] " + "}) < " + ServiceCentreMaxDistance
+
             foreach (var product in
                 client.CreateDocumentQuery<ProductDb>(
                     "dbs/" + database.Id + "/colls/" + productCollection.Id,
-                    "SELECT * FROM product p WHERE ST_DISTANCE(p.boutique.location, { " + "\"type\": \"Point\", "
-                    + "\"coordinates\": [" + ServiceCentreLngLat + "] " + "}) < " + ServiceCentreMaxDistance))
+                    "SELECT * FROM product p "))
             {
                 productList.Add(MapProduct(product));
             }
