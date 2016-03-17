@@ -114,6 +114,8 @@ namespace Asos.FashionEmergency.Web.Controllers
                            ImageUrl = product.Images.FirstOrDefault(),
                            Price = product.Price,
                            StoreId = product.Boutique.Id,
+                           StoreName = product.Boutique.Info.StoreName,
+                           StorePostCode = product.Boutique.Address.postCode,
                            Availability =
                                (int)
                                Math.Ceiling(
