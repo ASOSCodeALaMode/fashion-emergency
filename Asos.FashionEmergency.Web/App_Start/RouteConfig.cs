@@ -32,13 +32,6 @@ namespace Asos.FashionEmergency.Web
                 url: "postcode/{postcode}/product/{productId}/complete",
                 defaults: new { controller = "Product", action = "OrderComplete" }
                 );
-
-            routes.MapRoute(
-                name: "ViewMap",
-                url: "map",
-                defaults: new { controller = "Map", action = "Index" }
-                );
-
             routes.MapRoute(
                 name: "Default",
                 url: "",
