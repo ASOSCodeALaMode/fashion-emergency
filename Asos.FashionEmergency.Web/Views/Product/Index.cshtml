@@ -6,15 +6,22 @@
 @section Styles {
     <link href="@Url.Content("~/stylesheets/cover.css")" rel="stylesheet" type="text/css"/>
     <link href="@Url.Content("~/stylesheets/index.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/stylesheets/map.css")" rel="stylesheet" type="text/css" />
+}
+@section Scripts {
+    <script src="@Url.Content("~/scripts/map.js")"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDejyl47XopChNRYsmWPNEUl1NtYGtG7k&callback=initMap"></script>
+    <script src="@Url.Content("~/scripts/richmarker.js")"></script>
 }
 <div class="cover-container">
     <div class="inner cover">
         <div class="brand">Asos Marketplace</div>
         @using (Html.BeginForm("Index", "Product"))
         {
+            <div id="map"></div>
             <fieldset>
                 <label for="postcode">Postcode:</label>
-                @Html.TextBox("postcode", null, new { style = "text-transform: uppercase;" })
+                @Html.TextBox("postcode", null, new { style = "text-transform: uppercase;", @Value = "EC2A 3LT" })
                 <input type="submit" value="Find things near me" />
             </fieldset>
         }
