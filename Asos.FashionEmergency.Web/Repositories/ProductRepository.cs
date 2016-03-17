@@ -9,7 +9,8 @@ namespace Asos.FashionEmergency.Web.Repositories
     using Microsoft.Azure.Documents;
     using Microsoft.Azure.Documents.Client;
     using Microsoft.Azure.Documents.Linq;
-
+    using System.Text.RegularExpressions;
+    using Models;
     public class ProductRepository
     {
         private const string EndpointUrl = "https://asosemergencies.documents.azure.com:443/";
@@ -127,12 +128,72 @@ namespace Asos.FashionEmergency.Web.Repositories
                            StoreId = product.Boutique.Id,
                            StoreName = product.Boutique.Info.StoreName,
                            StorePostCode = product.Boutique.Address.postCode,
-                           Availability =
-                               (int)
-                               Math.Ceiling(
-                                   (product.Boutique.Info.BranchInStoreTime
-                                    + product.Boutique.Info.CollectionLeadTime + DeliveryLeadTime) / 60.0)
-                       };
+                           Availability = Availability(product.Boutique)
+            };
+        }
+        public int Availability(BoutiqueDb boutique) {
+            // calculates how soon a product can be delivered
+
+            // set up
+            int waitMinutes, maxWaitHours;
+            string weekday = DateTime.Now.ToString("ddd").ToUpper();
+            TimeSpan currentTimeOfDay = DateTime.Now.TimeOfDay;
+
+            // Calculate opening times and last order time
+            var storeOpeningTimeDetails = OpeningTimeDetails(boutique.Info.openingHours[weekday]);
+            TimeSpan openingTimeToday = storeOpeningTimeDetails.openingOffset;
+            TimeSpan lastOrderTime = storeOpeningTimeDetails.closingOffset
+                .Subtract(TimeSpan.FromMinutes(boutique.Info.CollectionLeadTime))
+                .Subtract(TimeSpan.FromMinutes(boutique.Info.BranchInStoreTime))
+                .Subtract(TimeSpan.FromMinutes(DeliveryLeadTime));
+            
+            // Case where store is not yet open
+            if (currentTimeOfDay < openingTimeToday)
+            {
+                waitMinutes = (int)((openingTimeToday - currentTimeOfDay).TotalMinutes
+                + boutique.Info.CollectionLeadTime + boutique.Info.BranchInStoreTime
+                + DeliveryLeadTime);
+            }
+            // case where it is too late to collect from store
+            // set to max of 14 hours
+            else if (currentTimeOfDay > lastOrderTime)
+            {
+                waitMinutes = 840;
+            }
+            // sweet spot where store is open and delivery is available ASAP
+            else {
+                waitMinutes = (int)(boutique.Info.BranchInStoreTime
+                + boutique.Info.CollectionLeadTime
+                + DeliveryLeadTime);
+            }
+
+            // Turn wait minutes in to hours and 
+            maxWaitHours = (int)Math.Ceiling(waitMinutes / 60.0);
+
+            return maxWaitHours;
+
+        }
+
+        private OpeningTimeDetails OpeningTimeDetails(string openingHours) {
+            // Parses opening time strings e.g. "10:00 - 18:00" in to time span offsets
+            var openingTimeDetails = new OpeningTimeDetails { }; // initiate object to return
+
+            // set up regex
+            string pat = "^([0-9]{2}):([0-9]{2}) - ([0-9]{2}):([0-9]{2})$";
+            Regex r = new Regex(pat);
+            Match m = r.Match(openingHours);
+
+            // map returned regex groups to variables
+            int openingHour = Convert.ToInt32(m.Groups[1].Value);
+            int openingMinute = Convert.ToInt32(m.Groups[2].Value);
+            int closingHour = Convert.ToInt32(m.Groups[3].Value);
+            int closingMinute = Convert.ToInt32(m.Groups[4].Value);
+
+            // calculate timespans
+            openingTimeDetails.openingOffset = TimeSpan.FromHours(openingHour).Add(TimeSpan.FromSeconds(openingMinute));
+            openingTimeDetails.closingOffset = TimeSpan.FromHours(closingHour).Add(TimeSpan.FromSeconds(closingMinute));
+
+            return openingTimeDetails; // return results
         }
     }
 }
