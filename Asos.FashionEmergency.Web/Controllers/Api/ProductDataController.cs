@@ -1,4 +1,6 @@
-﻿namespace Asos.FashionEmergency.Web.Controllers.Api
+﻿using Asos.FashionEmergency.Web.Repositories;
+
+namespace Asos.FashionEmergency.Web.Controllers.Api
 {
     using System.Web.Http;
 
