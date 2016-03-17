@@ -63,7 +63,6 @@ namespace Asos.FashionEmergency.Web.Repositories
             Database database;
             DocumentCollection productCollection;
             var client = DocumentDbClient(out database, out productCollection);
-
             var productList = new List<Product>();
 
             //WHERE ST_DISTANCE(p.boutique.location, { " + "\"type\": \"Point\", "
@@ -77,6 +76,8 @@ namespace Asos.FashionEmergency.Web.Repositories
                 productList.Add(MapProduct(product));
             }
 
+            client.Dispose();
+            
             return productList.OrderBy(x => x.Availability).ToList();
         }
 
@@ -86,9 +87,15 @@ namespace Asos.FashionEmergency.Web.Repositories
             DocumentCollection productCollection;
             var client = DocumentDbClient(out database, out productCollection);
 
-            return MapProduct(client.CreateDocumentQuery<ProductDb>(
-                    "dbs/" + database.Id + "/colls/" + productCollection.Id,
-                    "SELECT * FROM product p WHERE p.id = \"" + id + "\"").AsEnumerable().FirstOrDefault());
+            var product =
+                MapProduct(
+                    client.CreateDocumentQuery<ProductDb>(
+                        "dbs/" + database.Id + "/colls/" + productCollection.Id,
+                        "SELECT * FROM product p WHERE p.id = \"" + id + "\"").AsEnumerable().FirstOrDefault());
+
+            client.Dispose();
+
+            return product;
         }
 
         private DocumentClient DocumentDbClient(out Database database, out DocumentCollection productCollection)
