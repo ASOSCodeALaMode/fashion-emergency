@@ -28,6 +28,7 @@
         public int CollectionLeadTime { get; set; }
 
         public string StoreName { get; set; }
+        public Dictionary<string, string> openingHours { get; set; }
     }
 
     public class BoutiqueDb

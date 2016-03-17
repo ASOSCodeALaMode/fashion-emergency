@@ -1,9 +1,11 @@
 ﻿namespace Asos.FashionEmergency.Web.Controllers
 {
     using Microsoft.Azure.Documents.Spatial;
-
+    using System.Collections.Generic;
     public class Product
     {
+        public Dictionary<string, string> StoreOpeningHours;
+
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -19,6 +21,7 @@
         public string StoreId { get; set; }
 
         public string StoreName { get; set; }
+        public Dictionary<string, string> openingHours { get; set; }
 
         public string StorePostCode { get; set; }
 
