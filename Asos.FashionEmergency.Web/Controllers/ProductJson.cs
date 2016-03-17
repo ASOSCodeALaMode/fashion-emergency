@@ -2,6 +2,10 @@
 {
     using System.Collections.Generic;
 
+    using Asos.FashionEmergency.Web.Controllers.Api;
+
+    using Microsoft.Azure.Documents.Spatial;
+
     public class ProductDb
     {
         public string Id { get; set; }
@@ -22,11 +26,16 @@
         public int BranchInStoreTime { get; set; }
         
         public int CollectionLeadTime { get; set; }
+
+        public string StoreName { get; set; }
     }
 
     public class BoutiqueDb
     {
         public string Id { get; set; }
+
         public Info Info { get; set; }
+
+        public PostCode Address { get; set; }
     }
 }

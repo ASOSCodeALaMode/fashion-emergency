@@ -63,17 +63,21 @@ namespace Asos.FashionEmergency.Web.Repositories
             Database database;
             DocumentCollection productCollection;
             var client = DocumentDbClient(out database, out productCollection);
-
             var productList = new List<Product>();
+
+            //WHERE ST_DISTANCE(p.boutique.location, { " + "\"type\": \"Point\", "
+            //        + "\"coordinates\": [" + ServiceCentreLngLat + "] " + "}) < " + ServiceCentreMaxDistance
+
             foreach (var product in
                 client.CreateDocumentQuery<ProductDb>(
                     "dbs/" + database.Id + "/colls/" + productCollection.Id,
-                    "SELECT * FROM product p WHERE ST_DISTANCE(p.boutique.location, { " + "\"type\": \"Point\", "
-                    + "\"coordinates\": [" + ServiceCentreLngLat + "] " + "}) < " + ServiceCentreMaxDistance))
+                    "SELECT * FROM product p "))
             {
                 productList.Add(MapProduct(product));
             }
 
+            client.Dispose();
+            
             return productList.OrderBy(x => x.Availability).ToList();
         }
 
@@ -83,9 +87,15 @@ namespace Asos.FashionEmergency.Web.Repositories
             DocumentCollection productCollection;
             var client = DocumentDbClient(out database, out productCollection);
 
-            return MapProduct(client.CreateDocumentQuery<ProductDb>(
-                    "dbs/" + database.Id + "/colls/" + productCollection.Id,
-                    "SELECT * FROM product p WHERE p.id = \"" + id + "\"").AsEnumerable().FirstOrDefault());
+            var product =
+                MapProduct(
+                    client.CreateDocumentQuery<ProductDb>(
+                        "dbs/" + database.Id + "/colls/" + productCollection.Id,
+                        "SELECT * FROM product p WHERE p.id = \"" + id + "\"").AsEnumerable().FirstOrDefault());
+
+            client.Dispose();
+
+            return product;
         }
 
         private DocumentClient DocumentDbClient(out Database database, out DocumentCollection productCollection)
@@ -115,6 +125,8 @@ namespace Asos.FashionEmergency.Web.Repositories
                            ImageUrl = product.Images.FirstOrDefault(),
                            Price = product.Price,
                            StoreId = product.Boutique.Id,
+                           StoreName = product.Boutique.Info.StoreName,
+                           StorePostCode = product.Boutique.Address.postCode,
                            Availability =
                                (int)
                                Math.Ceiling(

@@ -74,9 +74,8 @@ namespace Asos.FashionEmergency.Web.Controllers
         public ActionResult OrderComplete(string postcode, int productId)
         {
             var product = productRepository.GetProductById(productId);
-            var store = storeRepository.GetStoreById(product.StoreId);
 
-            return View(model: new OrderCompleteViewModel { StoreName = store.Name, StorePostcode = store.Postcode, DestinationPostcode = postcode });
+            return View(model: new OrderCompleteViewModel { StoreName = product.StoreName, StorePostcode = product.StorePostCode, DestinationPostcode = postcode });
         }
     }
 }
