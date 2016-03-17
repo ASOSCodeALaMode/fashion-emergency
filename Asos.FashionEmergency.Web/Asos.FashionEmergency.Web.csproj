@@ -104,12 +104,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="images\asos-locator.png" />
     <Content Include="images\asos-logo.png" />
     <Content Include="images\favicon.ico" />
+    <Content Include="scripts\map.js" />
+    <Content Include="scripts\richmarker.js" />
     <Content Include="scripts\view-product.js" />
     <Content Include="stylesheets\asos-asap.css" />
     <Content Include="stylesheets\buy-product.css" />
     <Content Include="stylesheets\cover.css" />
+    <Content Include="stylesheets\index.css" />
+    <Content Include="stylesheets\map.css" />
     <Content Include="stylesheets\modal-dialog.css" />
     <Content Include="stylesheets\view-products.css" />
     <Content Include="Web.config" />
@@ -119,6 +124,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\ProductDataController.cs" />
     <Compile Include="Controllers\Api\OnTheDotController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\Product.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductPurchaseViewModel.cs" />
@@ -141,6 +147,7 @@
     <Content Include="Views\Product\ViewProduct.cshtml" />
     <Content Include="Views\Product\BuyProduct.cshtml" />
     <Content Include="Views\Product\OrderComplete.cshtml" />
+    <Content Include="Views\Map\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

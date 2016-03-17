@@ -4,16 +4,19 @@
     ViewBag.Title = "ASOS ASAP";
 }
 @section Styles {
-    <link href="@Url.Content("~/stylesheets/cover.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/stylesheets/cover.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/stylesheets/index.css")" rel="stylesheet" type="text/css"/>
 }
 <div class="cover-container">
     <div class="inner cover">
         <div class="brand">Asos Marketplace</div>
         @using (Html.BeginForm("Index", "Product"))
         {
-            <label for="postcode">Postcode:</label>
-            @Html.TextBox("postcode", null, new { style = "text-transform: uppercase;" })
-            <input type="submit" value="Find things near me" />
+            <fieldset>
+                <label for="postcode">Postcode:</label>
+                @Html.TextBox("postcode", null, new { style = "text-transform: uppercase;" })
+                <input type="submit" value="Find things near me" />
+            </fieldset>
         }
     </div>
 </div>
