@@ -9,7 +9,7 @@
 .product .detail  {
     background-color: rgba(0,0,0,0.6);
     font-size: 40px;
-    line-height: 65px;
+    line-height: 40px;
     bottom: 0;
     right: 0;
     padding: 0 15px;
@@ -38,21 +38,31 @@
 .availability:after {
     content: 'HR';
 }
+.description {
+    font-size: 14px;
+}
 .product-info {
     width: 450px;
     max-width: 80%;
 }
+.product-info h2 {
+    font-size: 25px
+}
 .product-info img {
     margin-bottom: 5px;
-    height: 350px;
+    height: 290px;
 }
 .product-info p {
     display: block;
-    margin: 0 80px;
+    margin: 0 40px;
     text-align: left;
 }
 .product-info a {
     font-size: 20px;
     display: block;
     text-align: center;
+}
+
+.extraneous-non-semantic-markup {
+	padding: 15px
 }
