@@ -18,7 +18,7 @@
 
         private const string ApiBooking = "booking";
 
-        private readonly DateTime dateForDelivery = new DateTime(2016, 3, 17, 10, 55, 0);
+        private readonly DateTime dateForDelivery = DateTime.UtcNow; // new DateTime(2016, 3, 17, 10, 55, 0);
 
         [AllowAnonymous]
         [HttpGet]

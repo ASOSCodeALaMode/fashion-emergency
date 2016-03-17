@@ -119,6 +119,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\ProductDataController.cs" />
     <Compile Include="Controllers\Api\OnTheDotController.cs" />
+    <Compile Include="Controllers\ProductJson.cs" />
     <Compile Include="Controllers\Product.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductPurchaseViewModel.cs" />
