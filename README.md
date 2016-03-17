@@ -15,3 +15,4 @@ ASOS Marketplace lists products from hundreds of independent retailers across th
 - Geolocation for immediate local store lookup
 - Notifications if you stray away from your designated delivery area
 - Calendar location cross-checking, to deliver your parcel at the earliest convenience
+- Independent Marketplace stores could receive stock of the main ASOS website's most popular items, so that these are available locally to be delivered within hours
