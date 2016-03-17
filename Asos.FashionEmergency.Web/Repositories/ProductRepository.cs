@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Asos.FashionEmergency.Web.Controllers;
 
-namespace Asos.FashionEmergency.Web.Controllers
+namespace Asos.FashionEmergency.Web.Repositories
 {
     using System;
 

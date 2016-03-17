@@ -126,10 +126,12 @@
     <Compile Include="Controllers\Api\OnTheDotController.cs" />
     <Compile Include="Controllers\ProductJson.cs" />
     <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\OrderCompleteViewModel.cs" />
     <Compile Include="Controllers\Product.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductPurchaseViewModel.cs" />
-    <Compile Include="Controllers\ProductRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\StoreRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
