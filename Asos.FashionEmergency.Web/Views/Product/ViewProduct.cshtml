@@ -1,7 +1,7 @@
 ﻿@model Asos.FashionEmergency.Web.Controllers.Product
 <h2>@Model.Name</h2>
 <img src="@Model.ImageUrl" />
-<p>@Model.Description</p>
+<p class="description">@Model.Description</p>
 <p class="availability">@Model.Availability</p>
 <p class="price">@Model.Price</p>
 <p>@Html.ActionLink("Buy now", "BuyProduct", new { productId = Model.Id })</p>
