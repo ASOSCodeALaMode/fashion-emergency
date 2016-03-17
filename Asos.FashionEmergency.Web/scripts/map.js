@@ -58,6 +58,7 @@ function initMap() {
     center = new google.maps.LatLng(51.5233512, -0.08101320000002943);
     map = new google.maps.Map(document.getElementById('map'), {
         center: center,
-        zoom: 12
+        zoom: 12,
+        disableDefaultUI: true
     });
 }
