@@ -28,25 +28,25 @@ function initMap() {
         disableDefaultUI: true
     });
 
-    new google.maps.Circle({
-        strokeColor: '#FF3300',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FF3300',
-        fillOpacity: 0.35,
-        map: map,
-        center: center,
-        radius: 16093.4
-    });
+    //new google.maps.Circle({
+    //    strokeColor: '#FF3300',
+    //    strokeOpacity: 0.8,
+    //    strokeWeight: 2,
+    //    fillColor: '#FF3300',
+    //    fillOpacity: 0.35,
+    //    map: map,
+    //    center: center,
+    //    radius: 16093.4
+    //});
 
-    new google.maps.Circle({
-        strokeColor: '#FFCC00',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FFCC00',
-        fillOpacity: 0.35,
-        map: map,
-        center: center,
-        radius: 8046.72
-    });
+    //new google.maps.Circle({
+    //    strokeColor: '#FFCC00',
+    //    strokeOpacity: 0.8,
+    //    strokeWeight: 2,
+    //    fillColor: '#FFCC00',
+    //    fillOpacity: 0.35,
+    //    map: map,
+    //    center: center,
+    //    radius: 8046.72
+    //});
 }
