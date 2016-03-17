@@ -104,11 +104,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="images\asos-locator-small.png" />
     <Content Include="images\asos-locator.png" />
     <Content Include="images\asos-logo.png" />
     <Content Include="images\favicon.ico" />
+    <Content Include="scripts\index.js" />
     <Content Include="scripts\map.js" />
-    <Content Include="scripts\richmarker.js" />
+    <Content Include="scripts\order-complete.js" />
     <Content Include="scripts\view-product.js" />
     <Content Include="stylesheets\asos-asap.css" />
     <Content Include="stylesheets\buy-product.css" />
