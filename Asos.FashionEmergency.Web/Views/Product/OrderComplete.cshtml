@@ -5,12 +5,19 @@
     ViewBag.Title = "ASOS ASAP - Order Complete";
 }
 @section Styles {
-    <link href="@Url.Content("~/stylesheets/view-products.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/stylesheets/view-products.css")" rel="stylesheet" type="text/css"/>
+    <link href="@Url.Content("~/stylesheets/map.css")" rel="stylesheet" type="text/css" />
 }
-
+@section Scripts {
+    <script type="text/javascript">
+        var storeName = '@Model.StoreName';
+        var storePostcode = '@Model.StorePostcode';
+        var destinationPostcode = '@Model.DestinationPostcode';
+    </script>
+    <script src="@Url.Content("~/scripts/map.js")"></script>
+    <script src="@Url.Content("~/scripts/order-complete.js")"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDejyl47XopChNRYsmWPNEUl1NtYGtG7k&callback=initMap" async defer></script>
+}
 <h2>Order complete</h2>
 <h3>Crisis averted</h3>
-
-<p>Store name: @Model.StoreName</p>
-<p>Store postcode: @Model.StorePostcode</p>
-<p>Destination postcode: @Model.DestinationPostcode</p>
+<div id="map"></div>
