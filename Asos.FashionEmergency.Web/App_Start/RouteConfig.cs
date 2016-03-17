@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http.Routing.Constraints;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Asos.FashionEmergency.Web
@@ -12,7 +13,8 @@ namespace Asos.FashionEmergency.Web
             routes.MapRoute(
                 name: "ViewProducts",
                 url: "postcode/{postcode}/{floor}/{category}",
-                defaults: new { controller = "Product", action = "ViewProducts", category = UrlParameter.Optional }
+                defaults: new { controller = "Product", action = "ViewProducts", category = UrlParameter.Optional },
+                constraints: new { floor = @"^(?!product).*$" }
                 );
 
             routes.MapRoute(
