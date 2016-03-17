@@ -197,5 +197,7 @@
     public class Store
     {
         public string storeId { get; set; }
+        public string Postcode { get; set; }
+        public string Name { get; set; }
     }
 }
