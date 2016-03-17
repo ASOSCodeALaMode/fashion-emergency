@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="images\asos-locator-small.png" />
     <Content Include="images\asos-locator.png" />
     <Content Include="images\asos-logo.png" />
     <Content Include="images\favicon.ico" />
