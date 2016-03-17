@@ -19,10 +19,11 @@
         @using (Html.BeginForm("Index", "Product"))
         {
             <div id="map"></div>
-            <fieldset>
+            <h4>Speedy deliveries from these Marketplace boutiques</h4>
+            <fieldset style="margin-top:2em;">
                 <label for="postcode">Postcode:</label>
                 @Html.TextBox("postcode", null, new { style = "text-transform: uppercase;", @Value = "EC2A 3LT" })
-                <input type="submit" value="Find things near me" />
+                <input type="submit" value="Find fashion near me" />
             </fieldset>
         }
     </div>
