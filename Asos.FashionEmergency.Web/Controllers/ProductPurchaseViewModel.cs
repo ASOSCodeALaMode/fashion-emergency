@@ -14,5 +14,7 @@ namespace Asos.FashionEmergency.Web.Controllers
 
         [Display(Name = "Delivery Time Slot")]
         public string SelectedTimeSlotId { get; set; }
+        public decimal DeliveryPrice { get; set; }
+        public decimal ProductPrice { get; set; }
     }
 }

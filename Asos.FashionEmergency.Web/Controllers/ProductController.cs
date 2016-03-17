@@ -45,6 +45,8 @@ namespace Asos.FashionEmergency.Web.Controllers
             return View(new ProductPurchaseViewModel
             {
                 ProductId = productId,
+                ProductPrice = product.Price,
+                DeliveryPrice = 6.99m,
                 PostCode = ViewBag.PostCode,
                 TimeSlotInfo = timeslots
             });
