@@ -35,8 +35,7 @@ function initMap() {
 
             geocoder.geocode({ 'location': { lat: position.lat(), lng: position.lng() } }, function(results, status) {
                 if (status === google.maps.GeocoderStatus.OK) {
-
-                    var postal_code = results.every(function(result) {
+                    results.every(function(result) {
                         var address_component = result.address_components.find(function(address_component) {
                             return address_component.types[0] === 'postal_code';
                         });
@@ -46,10 +45,6 @@ function initMap() {
                         }
                         return true;
                     });
-
-                    alert(postal_code);
-                } else {
-                    window.alert('Geocoder failed due to: ' + status);
                 }
             });
         }, 250));
