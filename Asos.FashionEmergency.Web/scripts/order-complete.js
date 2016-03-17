@@ -1,6 +1,6 @@
 ﻿var geocoder;
 
-function plotPostcode(postcode, icon) {
+function plotPostcode(postcode, icon, name) {
 
     var deferred = $.Deferred();
 
@@ -9,7 +9,7 @@ function plotPostcode(postcode, icon) {
             var position = { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
             new google.maps.Marker({
                 position: position,
-                title: storeName,
+                title: name,
                 map: map,
                 animation: google.maps.Animation.DROP,
                 icon: icon
@@ -27,7 +27,7 @@ function initMap() {
 
         geocoder = new google.maps.Geocoder;
 
-        $.when(plotPostcode(storePostcode, map.marketplaceStoreImage), plotPostcode(destinationPostcode))
+        $.when(plotPostcode(storePostcode, map.marketplaceStoreImage, storeName), plotPostcode(destinationPostcode))
             .done(function(storePosition, destinationPosition) {
                 var directionsDisplay = new google.maps.DirectionsRenderer();
                 directionsDisplay.setOptions({ suppressMarkers: true });
