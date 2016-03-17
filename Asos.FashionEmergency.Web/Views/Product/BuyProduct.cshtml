@@ -15,6 +15,12 @@
 @using (Html.BeginForm("BuyProduct", "Product"))
 {
     <fieldset class="form-group row">
+        <label style="font-size: 2em;">£@(Model.ProductPrice + Model.DeliveryPrice)</label>
+    </fieldset>
+    <fieldset class="form-group row">
+        <label>£@Model.ProductPrice + £@Model.DeliveryPrice delivery</label>
+    </fieldset>
+    <fieldset class="form-group row">
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Enter name" })
     </fieldset>
