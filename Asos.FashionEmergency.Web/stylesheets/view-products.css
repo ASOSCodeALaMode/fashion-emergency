@@ -35,9 +35,6 @@
 .product .availability {
     float: left
 }
-.availability:after {
-    content: 'HR';
-}
 .description {
     font-size: 14px;
 }

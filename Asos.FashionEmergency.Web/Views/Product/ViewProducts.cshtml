@@ -39,7 +39,7 @@
                 <a href="@Url.Action("ViewProduct", new {productId = product.Id})" alt="@product.Description">
                     <img src="@product.ImageUrl" />
                     <div class="detail">
-                        <div class="availability">@product.Availability</div>
+                        <div class="availability"><i class="fa fa-clock-o"></i> @(product.Availability)-@(product.Availability + 1)h</div>
                         <div class="price">@product.Price</div>
                     </div>
                 </a>
