@@ -9,7 +9,7 @@
 .product .detail  {
     background-color: rgba(0,0,0,0.6);
     font-size: 40px;
-    line-height: 40px;
+    line-height: 65px;
     bottom: 0;
     right: 0;
     padding: 0 15px;
@@ -55,8 +55,4 @@
     font-size: 20px;
     display: block;
     text-align: center;
-}
-
-.extraneous-non-semantic-markup {
-	padding: 15px
 }
